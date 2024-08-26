@@ -1,3 +1,5 @@
+let readline = require('readline-sync')
+
 export interface Data {
     dia: number 
     mes: number
@@ -64,40 +66,40 @@ export class DataII implements Data{
     }
 
     public getMesExtenso(): string {
-        if (this.mes = 1) {
+        if (this.mes === 1) {
                 return 'Janeiro'
         }
-        if (this.mes = 2) {
+        if (this.mes === 2) {
                 return 'Fevereiro'
         }
-        if (this.mes = 3) {
+        if (this.mes === 3) {
                 return 'Março'
         }
-        if (this.mes = 4) {
+        if (this.mes === 4) {
                 return 'Abril'
         }
-        if (this.mes = 5) {
+        if (this.mes === 5) {
                 return 'Maio'
         }
-        if (this.mes = 6) {
+        if (this.mes === 6) {
                 return 'Junho'
         }
-        if (this.mes = 7) {
+        if (this.mes === 7) {
                 return 'Julho'
         }
-        if (this.mes = 8) {
+        if (this.mes === 8) {
                 return 'Agosto'
         }
-        if (this.mes = 9) {
+        if (this.mes === 9) {
                 return 'Setembro'
         }
-        if (this.mes = 10) {
+        if (this.mes === 10) {
                 return 'Outubro'
         }
-        if (this.mes = 11) {
+        if (this.mes === 11) {
                 return 'Novembro'
         }
-        if (this.mes = 12) {
+        if (this.mes === 12) {
                 return 'Dezembro'
         }
         
@@ -119,12 +121,77 @@ export class DataII implements Data{
 
 let novaData = new DataII (29, 7, 2000)
 let outraData = new DataII (29, 7, 2024)
-console.log(novaData.getDia())
-console.log(novaData.getMes())
-console.log(novaData.getMesExtenso())
-console.log(novaData.getAno())
-console.log(novaData.isBissexto())
-novaData.compara(outraData)
-console.log(novaData.clone())
 
+function menu() {
+    console.log(`===== escolha aí =====\n 1. compara\n 2. getDia\n 3. getMes\n 4. getMesExtenso\n 5. getAno\n 6. isBissexto\n 7. clone\n 8. sair`)
 
+}
+
+function escolha(opcao: string) {
+    switch (opcao) {
+
+        case '1':
+
+        novaData.compara(outraData)
+
+            break;
+
+        case '2':
+
+        console.log(novaData.getDia())
+
+            break;
+
+        case '3':
+
+        console.log(novaData.getMes())
+
+            break;
+
+        case '4':
+
+        console.log(novaData.getMesExtenso())
+
+            break;
+
+        case '5':
+
+        console.log(novaData.getAno())
+    
+            break;
+
+        case '6':
+
+        console.log(novaData.isBissexto())
+    
+            break;
+
+        case '7':
+
+        console.log(novaData.clone())
+        
+            break;
+
+        case '8':
+
+            console.log("saindo...");
+           
+            return true; 
+
+        default:
+            console.log("Opção inválida. Por favor, escolha uma opção válida.");
+    }
+    return false; 
+}
+
+function main() {
+    let encerrar = false;
+
+    while (!encerrar) {
+        menu();
+        let opcao = readline.question("Escolha uma opcao: ");
+        encerrar = escolha(opcao);
+    }
+}
+
+main()
