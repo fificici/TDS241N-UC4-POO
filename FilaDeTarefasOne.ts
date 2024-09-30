@@ -29,7 +29,7 @@ interface inFilaDeTarefas {
     tarefa_pronta(): void
     concluirTarefa(index: number): void
 }
-//interface da classe FilDeTarefas
+//interface da classe FilaDeTarefas
 
 export class FilaDeTarefas implements inFilaDeTarefas {
     public fila: Tarefa[] = []
